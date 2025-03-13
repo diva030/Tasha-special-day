@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown for Tasha</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .countdown {
+            text-align: center;
+        }
+        .heart {
+            font-size: 100px;
+            animation: pulse 1s infinite alternate;
+            color: #ff69b4;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .days {
+            font-size: 32px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculateDaysLeft() {
+            const today = new Date();
+            const birthday = new Date(today.getFullYear(), 4, 1); // 1st May
+            if (today > birthday) {
+                birthday.setFullYear(today.getFullYear() + 1);
+            }
+            const timeDifference = birthday - today;
+            const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById("days").textContent = daysLeft + " days left";
+        }
+        window.onload = calculateDaysLeft;
+    </script>
+</head>
+<body>
+    <div class="countdown">
+        <div class="heart">❤️</div>
+        <div class="message">Just another day closer to celebrating you! 💖</div>
+        <div class="days" id="days"></div>
+    </div>
+</body>
+</html>
